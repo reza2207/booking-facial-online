@@ -706,13 +706,13 @@ class Product extends CI_Controller {
 	private function id_bayar($idtrx)
 	{
 		$query = $this->Produk_model->check_id_trf($idtrx);
-		if($query->num_rows() == '0'){
+		if($query->num_rows() == 0){
 
-			$id = 'trf-'.date('Ymd').'-001';
+			$id = 'trf-'.$idtrx.'-001';
 		}else{
-			$lastid = $query->row('id_transaksi');
+			$lastid = $query->row('id_pembayaran');
 			$e = explode('-', $lastid);
-			$id = $e[0].'-'.$e[1].'-'.STR_PAD((int) $e[2]+1, 3, "0", STR_PAD_LEFT);
+			$id = 'trf'.$idtrx.'-'.STR_PAD((int) $e[4]+1, 3, '0', STR_PAD_LEFT);
 
 		}
 
