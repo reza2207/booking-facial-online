@@ -84,9 +84,10 @@
 			format: 'dd-mm-yyyy',
 			maxDate: function(){
 				var date = new Date();
-				date.setDate(date.getDate()-1);
+				date.setDate(date.getDate()-(360*17));
 				return new Date(date.getFullYear(), date.getMonth(), date.getDate());
-			}
+			},
+			
 		});
 
 		if($('#checkbox').prop("checked") == true){

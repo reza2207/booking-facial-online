@@ -224,4 +224,20 @@ class User_model extends CI_Model {
 		$this->db->where('id_user', $iduser);
 		return $this->db->update('tb_user', $data);
 	}
+
+	public function cek_email($email, $tgl)
+	{
+		$this->db->from('tb_user');
+		$this->db->where('tgl_lahir', $tgl);
+		$this->db->where('email', $email);
+		return $this->db->get();
+	}
+
+	public function update_pass($email, $password)
+	{
+		$data = array('password'=>$this->hash_password($password)
+		);
+		$this->db->where('email', $email);
+		return $this->db->update('tb_user', $data);
+	}
 }

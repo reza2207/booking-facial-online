@@ -373,5 +373,78 @@ class User extends CI_Controller {
 		$this->email->send();
 	}
 
+	public function lupa_sandi()
+	{
+		if(isset($_SESSION['logged_in']) AND $_SESSION['logged_in'] === true)
+		{	
+			show_404();
+			
+		}else{
+
+			$data = new stdClass();
+			$data->title = 'Lupa Sandi';
+
+			$this->load->view('header', $data);
+			$this->load->view('lupa_sandi');
+
+		}
+	}
+
+	public function cek_req_lupa()
+	{
+		if($this->input->post(null)){
+			$email = $this->input->post('email');
+			$tgl = tanggal1($this->input->post('tgl'));
+			$query = $this->User_model->cek_email($email, $tgl);
+			$data = new stdClass();
+			if($query->num_rows() > 0){
+				// login failed
+				$data->type = 'successs';
+				$data->pesan = $email;
+				echo json_encode($data);
+			}else{
+				$data->type = 'error';
+				$data->pesan = 'Email / Tanggal Salah';
+				echo json_encode($data);
+			}
+		}
+	}
+
+	public function pass_baru()
+	{
+		if($this->input->post(null)){
+			$email = $this->input->post('email');
+			$password = $this->input->post('password');
+			$query = $this->User_model->update_pass($email, $password);
+			$data = new stdClass();
+
+			$this->form_validation->set_rules('password', 'Password', 'required|min_length[6]|max_length[50]',
+		                array('required' => '%s harap dimasukkan.',
+		                	'min_length'=>'%s minimal 6 karakter.',
+		                )
+		        );
+			if ($this->form_validation->run() == FALSE){
+
+		            $errors = validation_errors();
+		            $respons_ajax['type'] = 'error';
+		            $respons_ajax['pesan'] = $errors;
+		            echo json_encode($respons_ajax);
+
+		    }else{
+
+				if($query){
+					// login failed
+					$data->type = 'success';
+					$data->pesan = 'Berhasil';
+					echo json_encode($data);
+				}else{
+					$data->type = 'error';
+					$data->email = 'Gagal';
+					echo json_encode($data);
+				}
+			}
+		}
+	}
+
 
 }

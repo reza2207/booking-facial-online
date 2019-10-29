@@ -99,6 +99,7 @@
                     <div class="col-sm-9">
                       <input type="text" class="form-control" name="nama" id="nama">
                       <input type="text" class="form-control sr-only" name="id" id="id_facial">
+                      <input type="text" class="form-control sr-only" name="nama_lama" id="nama_lama">
                     </div>
                   </div>
 
@@ -162,7 +163,7 @@
 
               $("#status option[value='"+data.status+"']").prop('selected', true);
               $('#id_facial').val(data.id_facial);
-              $('#nama').val(data.nama);
+              $('#nama, #nama_lama').val(data.nama);
               $('#keterangan').val(data.deskripsi);
               $('#harga').val(data.harga);
             }

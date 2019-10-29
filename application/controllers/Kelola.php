@@ -129,8 +129,9 @@ class Kelola extends CI_Controller {
 					array('required' => '%s harap diisi.',
 						'max_length'=> '%s tidak boleh melebihi 250 karakter')
 				);
-				$this->form_validation->set_rules('nama', 'Nama', 'required',
-					array('required' => '%s harap diisi.')
+				$this->form_validation->set_rules('nama', 'Nama', 'required|is_unique[tb_facial.nama]',
+					array('required' => '%s harap diisi.',
+							'is_unique'=>'%s sudah terdaftar.')
 				);
 				$this->form_validation->set_rules('harga', 'Harga', 'required',
 					array('required' => '%s harap diisi.')
@@ -182,8 +183,9 @@ class Kelola extends CI_Controller {
 					array('required' => '%s harap diisi.',
 						'max_length'=> '%s tidak boleh melebihi 250 karakter')
 				);
-				$this->form_validation->set_rules('nama', 'Nama', 'required',
-					array('required' => '%s harap diisi.')
+				$this->form_validation->set_rules('nama', 'Nama', 'required|is_unique[tb_produk.nama]',
+					array('is_unique'=>'%s sudah terdaftar.',
+						'required' => '%s harap diisi.')
 				);
 				$this->form_validation->set_rules('harga', 'Harga', 'required',
 					array('required' => '%s harap diisi.')
@@ -314,9 +316,16 @@ class Kelola extends CI_Controller {
 					array('required' => '%s harap diisi.',
 						'max_length'=> '%s tidak boleh melebihi 250 karakter')
 				);
-				$this->form_validation->set_rules('nama', 'Nama', 'required',
-					array('required' => '%s harap diisi.')
-				);
+				if($this->input->post('nama') == $this->input->post('nama_lama')){
+					$this->form_validation->set_rules('nama', 'Nama', 'required',
+						array('required' => '%s harap diisi.')
+					);
+				}else{
+					$this->form_validation->set_rules('nama', 'Nama', 'required|is_unique[tb_facial.nama]',
+						array('required' => '%s harap diisi.',
+								'is_unique'=>'%s sudah terdaftar.')
+					);
+				}
 				$this->form_validation->set_rules('harga', 'Harga', 'required',
 					array('required' => '%s harap diisi.')
 				);
@@ -366,9 +375,17 @@ class Kelola extends CI_Controller {
 					array('required' => '%s harap diisi.',
 						'max_length'=> '%s tidak boleh melebihi 250 karakter')
 				);
-				$this->form_validation->set_rules('nama', 'Nama', 'required',
-					array('required' => '%s harap diisi.')
-				);
+				if($this->input->post('nama') == $this->input->post('nama_lama')){
+					$this->form_validation->set_rules('nama', 'Nama', 'required',
+						array('required' => '%s harap diisi.')
+					);
+				}else{
+					$this->form_validation->set_rules('nama', 'Nama', 'required|is_unique[tb_produk.nama]',
+						array('is_unique'=>'%s sudah terdaftar.',
+							'required' => '%s harap diisi.')
+					);
+				}
+
 				$this->form_validation->set_rules('harga', 'Harga', 'required',
 					array('required' => '%s harap diisi.')
 				);

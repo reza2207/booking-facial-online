@@ -141,9 +141,6 @@ class Product extends CI_Controller {
 			$this->load->view('product_detail', $data);
 		}
 
-		
-
-
 	}
 
 	public function keranjang()

@@ -53,6 +53,8 @@ $route['default_controller'] = 'welcome';
 $route['home'] = 'welcome';
 $route['register'] = 'User/register';
 $route['buat-akun'] = 'User/register';
+$route['lupa-sandi'] = 'User/lupa_sandi';
+$route['lupa_sandi'] = 'User/lupa_sandi';
 $route['product/p/(.+)'] = 'product/index/$1';
 $route['Product/p/(.+)'] = 'product/index/$1';
 
@@ -61,7 +63,6 @@ $route['Booking/p/(.+)'] = 'product/index/$1';
 $route['booking/data_booking'] = 'booking/riwayat_booking';
 $route['product/konfirmasi_pembayaran/p/(.+)'] = 'product/konfirmasi_pembayaran/$1';
 
-$route['lupa-sandi'] = 'User/forget_password';
 $route['login'] = 'User/login';
 $route['logout'] = 'User/logout';
 

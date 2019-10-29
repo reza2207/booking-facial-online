@@ -37,7 +37,7 @@ class Profile extends CI_Controller {
 
 			$data = new stdClass();
 			$data->title = 'Profile';
-			$data->page_active = 'home';
+			$data->page_active = 'profile';
 			$data->role = $_SESSION['role'];
 			$data->email = $_SESSION['email'];
 			$data->logged_in = $_SESSION['logged_in'];
@@ -65,7 +65,7 @@ class Profile extends CI_Controller {
 			if($iduser == $_SESSION['id_user']){
 				$data = new stdClass();
 				$data->title = 'Profile';
-				$data->page_active = 'home';
+				$data->page_active = 'profile';
 				$data->role = $_SESSION['role'];
 				$data->email = $_SESSION['email'];
 				$data->logged_in = $_SESSION['logged_in'];
@@ -210,7 +210,7 @@ class Profile extends CI_Controller {
 			if($iduser == $_SESSION['id_user']){
 				$data = new stdClass();
 				$data->title = 'Profile';
-				$data->page_active = 'home';
+				$data->page_active = 'profile';
 				$data->role = $_SESSION['role'];
 				$data->email = $_SESSION['email'];
 				$data->logged_in = $_SESSION['logged_in'];
