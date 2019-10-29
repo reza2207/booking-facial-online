@@ -103,9 +103,10 @@ class Booking_model extends CI_Model {
 
 	public function list_booking($limit, $start, $params = null) 
 	{
-		$this->db->select('tb_booking.id_booking, tb_booking.id_user, tb_booking.nama, tb_booking.telepon, tb_booking.email,  tb_facial.nama jenis_facial, tb_booking.tanggal, tb_booking.jam, tb_booking.status, tb_booking.harga, tb_booking.edit');
+		$this->db->select('tb_booking.id_booking, tb_booking.id_user, tb_booking.nama, tb_booking.telepon, tb_booking.email,  tb_facial.nama jenis_facial, tb_booking.tanggal, tb_booking.jam, tb_booking.status, tb_booking.harga, tb_booking.edit, tb_user.nama as bookby');
 		$this->db->from($this->table);
 		$this->db->join('tb_facial', 'tb_booking.id_facial = tb_facial.id_facial', 'LEFT');
+		$this->db->join('tb_user', 'tb_booking.id_user = tb_user.id_user', 'LEFT');
 		if($params != null){
 			$this->db->where('tb_booking.status', $params);
 		}

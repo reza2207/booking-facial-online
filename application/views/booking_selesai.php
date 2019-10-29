@@ -12,6 +12,7 @@
                 <tr>
                   <th>No.</th>
                   <th>Order ID</th>
+                  <th>Dibooking Oleh</th>
                   <th>Nama</th>
                   <th>Tanggal</th>
                   <th>Jam</th>
@@ -27,6 +28,7 @@
                   <tr>
                     <td><?= $no++;?></td>
                     <td><?= $row->id_booking;?></td>
+                    <td><?= $row->bookby;?></td>
                     <td><?= $row->nama;?></td>
                     <td><?= tanggal($row->tanggal);?></td>
                     <td><?= $row->jam;?></td>
