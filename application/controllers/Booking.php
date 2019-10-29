@@ -141,7 +141,7 @@ class Booking extends CI_Controller {
 
 				}else{
 					
-					$id = $this->_id_booking($tgl);
+					$id = $this->_id_booking(date('Y-m-d'));
 
 					if($this->Booking_model->new_data($id, $id_user, $nama, $tgl, $jam, $telp, $email, $id_facial, $harga)){
 

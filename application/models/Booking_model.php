@@ -36,7 +36,7 @@ class Booking_model extends CI_Model {
 	public function check_tgl($tgl){
 		$this->db->select('id_booking');
 		$this->db->from($this->table);
-		$this->db->where('tanggal', $tgl);
+		$this->db->where('date(tanggal_book)', $tgl);
 		$this->db->order_by('id_booking', 'DESC');
 		$this->db->limit('1');
 		return $this->db->get();
