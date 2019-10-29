@@ -33,7 +33,7 @@
                <input type="text" name="idproduk[]" value="<?= $row->id_produk;?>" hidden>
               </div>
               <div class="col-sm-2 pt-5">
-                <input type="number" name="jumlah[]" min="0" max="<?= $row->sisa;?>" class="form-control jumlah" id="jumlah" data-id="<?= $row->id_temp_trans;?>" value="1">
+                <input type="number" name="jumlah[]" min="0" data-max="<?= $row->sisa;?>" class="form-control jumlah" id="jumlah" data-id="<?= $row->id_temp_trans;?>" value="1">
               </div>
               <div class="col-sm-2 pt-5">
                 <span id="subtotal<?= $row->id_temp_trans;?>">Rp. <?= titik($row->harga);?></span>
@@ -82,11 +82,11 @@
       let harga = $(idharga).val();
       let subtotal = jumlah*harga;
       let idsub = '#subtotal'+id;
-      let max = $(this).attr('max');
+      let max = parseInt($(this).attr('data-max'));
       let idsubs = '#subs'+id;
       
-      if(jumlah >= max){
-       
+      if(jumlah > max){
+      	swal('')
         $(idsubs).val(0);
       }else if(jumlah > 0){
         $(idsubs).val(subtotal);
@@ -110,7 +110,11 @@
       let idsubs = '#subs'+id;
       
       if(jumlah >= max){
-       
+       swal({
+            type: 'error',
+            text: 'stok tidak cukup',
+            allowOutsideClick: false
+         })
         $(idsubs).val(0);
       }else if(jumlah > 0){
         $(idsubs).val(subtotal);
