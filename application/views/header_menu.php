@@ -74,7 +74,7 @@
 
 						<li class="nav-item">
 
-							<a class="nav-link text-light" href="<?= base_url().'logout';?>"><i class="fa fa-sign-out"></i> Logout</a>
+							<a class="nav-link text-light" href="<?= base_url().'logout';?>" id="sign_out"><i class="fa fa-sign-out"></i> Logout</a>
 						</li>
 
 					</ul>
