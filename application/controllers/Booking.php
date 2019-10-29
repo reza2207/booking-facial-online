@@ -469,11 +469,16 @@ class Booking extends CI_Controller {
 					$data->type = 'error';
 					$data->pesan = $errors;
 
-				}else if($this->_check_jadwal($tgl, $jam)){
+				}elseif(strtotime($tgl.' '.$jam) < strtotime(date('Y-m-d H:i'))){
+					$data->type = 'error';
+					$data->pesan = 'Jam Tidak Valid';
+
+				}elseif($this->_check_jadwal($tgl, $jam)){
 					$data->type = 'error';
 					$data->pesan = 'Booking sudah full';
 
 				}else{
+
 
 					if($this->Booking_model->update_data($id, $tgl, $jam, $jenis, $harga)){
 

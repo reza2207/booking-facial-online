@@ -146,7 +146,8 @@ class Booking_model extends CI_Model {
 			'tanggal'=>$tgl,
 			'jam'=>$jam,
 			'id_facial'=>$jenis,
-			'harga'=>$harga);
+			'harga'=>$harga,
+			'edit'=>1);
 		$this->db->where('id_booking', $id);
 
 		return $this->db->update($this->table, $data);
